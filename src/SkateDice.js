@@ -4,7 +4,10 @@ import './SkateDice.css'
 class SkateDice extends Component{
     render(){
         return(
-            <div className = "tile margin-top-10">
+            <div
+                onClick = {props.onClick} 
+                className = "tile margin-top-10">
+                {props.value}
             </div>
         );
     }
