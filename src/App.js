@@ -14,7 +14,9 @@ class App extends Component {
     };
   }
   renderDice(input){
-    
+    return(
+      <SkateDice/>
+    );
   }
   render() {
     const index1 = Math.floor(Math.random()*7);
