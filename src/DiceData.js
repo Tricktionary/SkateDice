@@ -11,16 +11,16 @@ export const DICE1 = [
 export const DICE2 = [
     'X',
     'KICKFLIP',
-    'HEELFlip',
+    'HEELFLIP',
     'SHOVE-IT',
     'OLLIE'
 ]
 
 export const DICE3 = [
-    '1 Tries',
-    '2 Tries',
-    '3 Tries',
-    '4 Tries',
-    '5 Tries',
-    '6 Tries'
+    '1 TRY',
+    '2 TRIES',
+    '3 TRIES',
+    '4 TRIES',
+    '5 TRIES',
+    '6 TRIES'
 ]

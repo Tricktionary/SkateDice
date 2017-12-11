@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SkateDice from './SkateDice.js'
 import {DICE1 , DICE2 , DICE3} from './DiceData.js'
+import './App.css';
 
 class DiceRoller extends Component{
     constructor(){
@@ -11,25 +12,33 @@ class DiceRoller extends Component{
           dice3 : DICE3
         };
       }
+      /*
+        Renders The Dice
+      */
       renderDice(input){
+        const index = Math.floor(Math.random()*input.length); //Pulls The Index
+        let value = input[index];                             //Value of the Die
         return(
-          <SkateDice value={input} />
+          <SkateDice value={value} onClick = {this.rollDice(input)}/>
         );
       }
-      
+      /*
+        Roll The Dice 
+      */
+      rollDice(input){
+        console.log("LOL");
+      }  
       render() {
-        const index1 = Math.floor(Math.random()*7);
-        const index2 = Math.floor(Math.random()*5);
-        const index3 = Math.floor(Math.random()*6);
-        const diceRoll1 = this.State.dice1;
-        const diceRoll2 = this.State.dice2;
-        const diceRoll3 = this.State.dice3;
+        const diceRoll1 = this.State.dice1;     //Variation
+        const diceRoll2 = this.State.dice2;     //Trick
+        const diceRoll3 = this.State.dice3;     //# of Tries
         return (
           <div className="App">
             <h1>Skate Dice</h1>
-            {this.renderDice(diceRoll1[index1])}
-            {this.renderDice(diceRoll2[index2])}
-            {this.renderDice(diceRoll3[index3])}  
+            {this.renderDice(diceRoll1)}      
+            {this.renderDice(diceRoll2)}
+            {this.renderDice(diceRoll3)}  
+            <center><button className="margin-top-50 btn wave-effect">REROLL</button></center>
          </div>
         );
     }
