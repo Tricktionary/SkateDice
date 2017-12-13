@@ -4,44 +4,31 @@ import {DICE1 , DICE2 , DICE3} from './DiceData.js'
 import './App.css';
 
 class DiceRoller extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
-          dice1   : DICE1,
-          dice2   : DICE2,
-          dice3   : DICE3,
-          value1  : '',
-          value2  : '',
-          value3  : ''
+          dice1  : DICE1,
+          dice2  : DICE2,
+          dice3  : DICE3,
+          values : Array(3).fill(null),
         };
       }
+      
+      handleClick(){
+        let roll1 = this.state.dice1[Math.floor( Math.random() * this.state.dice1.length)];
+        let roll2 = this.state.dice2[Math.floor( Math.random() * this.state.dice2.length)];
+        let roll3 = this.state.dice3[Math.floor( Math.random() * this.state.dice3.length)];
 
-      roll(){
-        //Dice Arrays
-        let diceRoll1  = this.state.dice1;     //Variation
-        let diceRoll2  = this.state.dice2;     //Trick
-        let diceRoll3  = this.state.dice3;     //# of Tries
-
-        //New Value
-        let newValue1 = diceRoll1[Math.floor(Math.random()*diceRoll1.length)];
-        let newValue2 = diceRoll2[Math.floor(Math.random()*diceRoll2.length)];
-        let newValue3 = diceRoll3[Math.floor(Math.random()*diceRoll3.length)];
-
+        let newValues = [roll1,roll2,roll3];
+        //console.log(newValues);
         this.setState({
-          value1 : newValue1,
-          value2 : newValue2,
-          value3 : newValue3,
-        });
-        console.log(this);
+          values : newValues,
+        })
       }
 
-      renderDice(){
+      renderDice(i){
         return(
-          <div>
-            <SkateDice value={this.state.dice1[this.state.value1]} />
-            <SkateDice value={this.state.dice2[this.state.value2]} />
-            <SkateDice value={this.state.dice3[this.state.value3]}/>
-          </div>
+          <SkateDice value={this.state.values[i]}/>
         );
       }
 
@@ -49,11 +36,18 @@ class DiceRoller extends Component{
         return (
           <div className="App">
             <h1>Skate Dice</h1>
-            {this.renderDice()}
+            {this.renderDice(0)}
+            {this.renderDice(1)}
+            {this.renderDice(2)}
             <center>
-              <button className="margin-top-50 btn waves-effect" onClick={this.roll.bind(this)}>REROLL</button>
+              <button 
+                className='btn waves-effect' 
+                onClick = {() => this.handleClick()}>
+                ROLL
+              </button>
             </center>
-         </div>
+          </div>
+
         );
 
     }
