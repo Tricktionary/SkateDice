@@ -6,7 +6,7 @@ import './App.css';
 class DiceRoller extends Component{
     constructor(){
         super();
-        this.State = {
+        this.state = {
           dice1   : DICE1,
           dice2   : DICE2,
           dice3   : DICE3,
@@ -18,11 +18,9 @@ class DiceRoller extends Component{
 
       roll(){
         //Dice Arrays
-        let diceRoll1  = this.State.dice1;     //Variation
-        let diceRoll2  = this.State.dice2;     //Trick
-        let diceRoll3  = this.State.dice3;     //# of Tries
-
-       
+        let diceRoll1  = this.state.dice1;     //Variation
+        let diceRoll2  = this.state.dice2;     //Trick
+        let diceRoll3  = this.state.dice3;     //# of Tries
 
         //New Value
         let newValue1 = diceRoll1[Math.floor(Math.random()*diceRoll1.length)];
@@ -34,22 +32,15 @@ class DiceRoller extends Component{
           value2 : newValue2,
           value3 : newValue3,
         });
-        console.log(newValue1);
-        console.log(newValue2);
-        console.log(newValue3);
-        //console.log(this.State.value1);
-        //console.log(this.State.value2);
-        //console.log(this.State.value3);
-        
-        
+        console.log(this);
       }
 
       renderDice(){
         return(
           <div>
-            <SkateDice value={this.State.dice1[this.State.value1]} />
-            <SkateDice value={this.State.dice2[this.State.value2]} />
-            <SkateDice value={this.State.dice3[this.State.value3]}/>
+            <SkateDice value={this.state.dice1[this.state.value1]} />
+            <SkateDice value={this.state.dice2[this.state.value2]} />
+            <SkateDice value={this.state.dice3[this.state.value3]}/>
           </div>
         );
       }
