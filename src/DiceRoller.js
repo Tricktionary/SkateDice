@@ -10,7 +10,8 @@ class DiceRoller extends Component{
           dice1  : DICE1,
           dice2  : DICE2,
           dice3  : DICE3,
-          values : Array(3).fill(null),
+          values :Array(3).fill(null),
+          pastTricks :Array(1).fill(null),
         };
       }
       
@@ -20,9 +21,14 @@ class DiceRoller extends Component{
         let roll3 = this.state.dice3[Math.floor( Math.random() * this.state.dice3.length)];
 
         let newValues = [roll1,roll2,roll3];
-        //console.log(newValues);
+        let trick = roll1 + ' ' + roll2 + ' ' + roll3 + '<br/>';
+
+        let trickLib = this.state.pastTricks.slice(0, this.state.pastTricks.length +1);
+        trickLib[trickLib.length] = trick;
+
         this.setState({
           values : newValues,
+          pastTricks : trickLib,
         })
       }
 
@@ -32,7 +38,15 @@ class DiceRoller extends Component{
         );
       }
 
+      renderOldTricks(i){
+        return(
+          <p>
+            {i}
+          </p>
+        );
+      }
       render() {   
+        const pastTricks = this.state.pastTricks;
         return (
           <div className="App">
             <h1>Skate Dice</h1>
@@ -45,6 +59,7 @@ class DiceRoller extends Component{
                 onClick = {() => this.handleClick()}>
                 ROLL
               </button>
+              {this.renderOldTricks(pastTricks)}
             </center>
           </div>
 

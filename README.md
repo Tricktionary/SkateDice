@@ -7,7 +7,7 @@ X's are wildcards and is players choice
 All other tricks are mandatory 
 
 Special Cases:
-  Ollie Nollie = Nollie 
+  Ollie + Nollie = Nollie 
 
 TO DO 
   Component that save Tricks Done
