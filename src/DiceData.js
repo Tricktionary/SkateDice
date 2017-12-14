@@ -5,7 +5,8 @@ export const DICE1 = [
     'SWITCH',
     'NOLLIE',
     'VARIAL',
-    '360'
+    '360',
+    'FAKIE'
 ]
 
 export const DICE2 = [

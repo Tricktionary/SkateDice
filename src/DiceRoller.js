@@ -69,7 +69,7 @@ class DiceRoller extends Component{
                 </center>
               </div>
               <div className="col m6 s6">
-                <h4>Past Tricks</h4>
+                <h4 className="center">Past Tricks</h4>
                 {this.renderOldTricks(pastTricks)}
               </div>
             </div>
