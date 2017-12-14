@@ -11,7 +11,7 @@ class DiceRoller extends Component{
           dice2  : DICE2,
           dice3  : DICE3,
           values :Array(3).fill(null),
-          pastTricks :Array(1).fill(null),
+          pastTricks :Array(0).fill(null),
         };
       }
       
@@ -21,7 +21,7 @@ class DiceRoller extends Component{
         let roll3 = this.state.dice3[Math.floor( Math.random() * this.state.dice3.length)];
 
         let newValues = [roll1,roll2,roll3];
-        let trick = roll1 + ' ' + roll2 + ' ' + roll3 + '<br/>';
+        let trick = roll1 + ' ' + roll2 + ' ' + roll3 ;
 
         let trickLib = this.state.pastTricks.slice(0, this.state.pastTricks.length +1);
         trickLib[trickLib.length] = trick;
@@ -39,10 +39,13 @@ class DiceRoller extends Component{
       }
 
       renderOldTricks(i){
+        const listItems = i.map((trick) =>
+          <li>{trick}</li>
+        );
         return(
-          <p>
-            {i}
-          </p>
+          <ol>
+            {listItems}
+          </ol>
         );
       }
       render() {   
@@ -50,17 +53,27 @@ class DiceRoller extends Component{
         return (
           <div className="App">
             <h1>Skate Dice</h1>
-            {this.renderDice(0)}
-            {this.renderDice(1)}
-            {this.renderDice(2)}
-            <center>
-              <button 
-                className='btn waves-effect' 
-                onClick = {() => this.handleClick()}>
-                ROLL
-              </button>
-              {this.renderOldTricks(pastTricks)}
-            </center>
+            <p className="center">Created By: Andy Bui</p>
+            <div className="row">
+              <div className="col m6 s6">
+                <h4>Dice</h4>
+                {this.renderDice(0)}
+                {this.renderDice(1)}
+                {this.renderDice(2)}
+                <center>
+                  <button 
+                    className='btn waves-effect' 
+                    onClick = {() => this.handleClick()}>
+                    ROLL
+                  </button>
+                </center>
+              </div>
+              <div className="col m6 s6">
+                <h4>Past Tricks</h4>
+                {this.renderOldTricks(pastTricks)}
+              </div>
+            </div>
+             
           </div>
 
         );
